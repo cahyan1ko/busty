@@ -1,0 +1,30 @@
+name: busty
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+    sdk: ^3.5.4
+
+dependencies:
+    flutter:
+        sdk: flutter
+    get: ^4.7.2
+    iconify_flutter: ^0.0.7
+
+dev_dependencies:
+    flutter_test:
+        sdk: flutter
+    flutter_lints: ^4.0.0
+
+flutter:
+    assets:
+        - assets/img/bro.png
+        - assets/img/pexels-heyho-7535030.jpg
+        - assets/img/logo-stacktrace.png
+        - assets/img/logo-trackpir.png
+        - assets/img/logo-busty.png
+        - assets/img/logo-ls-busty.png
+        - assets/img/sampletujuan.png
+
+    uses-material-design: true
