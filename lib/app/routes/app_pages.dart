@@ -1,9 +1,16 @@
+import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../modules/beranda/bindings/beranda_binding.dart';
 import '../modules/beranda/views/beranda_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/detail_opr/bindings/detail_opr_binding.dart';
+import '../modules/detail_opr/views/detail_opr_view.dart';
+import '../modules/detection/bindings/detection_binding.dart';
+import '../modules/detection/views/detection_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/forgot_password/views/forgot_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -25,6 +32,15 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.HOME;
+
+  static final UNKNOWN = GetPage(name: '/notfound', page: () => Scaffold());
+
+  static const HOME = '/home';
+  static const TRACKING = '/home/Tracking';
+  static const BERANDA = '/home/Beranda';
+  static const JADWAL = '/home/Jadwal';
+
+  static const DETAIL_OPR = '/detail_opr';
 
   static final routes = [
     GetPage(
@@ -71,6 +87,16 @@ class AppPages {
       name: _Paths.FORGOT_PASSWORD,
       page: () => const ForgotPasswordView(),
       binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_OPR,
+      page: () => const DetailOprView(),
+      binding: DetailOprBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETECTION,
+      page: () => const DetectionView(),
+      binding: DetectionBinding(),
     ),
   ];
 }

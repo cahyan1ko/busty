@@ -24,7 +24,7 @@ class LoginController extends GetxController {
     if (username.value == 'admin' && password.value == 'admin') {
       isLoading.value = false;
       Get.snackbar('Login Sukses', 'Selamat datang, ${username.value}');
-      Get.offAll(() => HomeView());
+      Get.offAllNamed('/home');
     } else {
       isLoading.value = false;
       errorMessage.value = 'Username atau password salah';

@@ -12,6 +12,9 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const HOME_HEADER = _Paths.HOME_HEADER;
+  static const DETAIL_OPR = _Paths.DETAIL_OPR;
+  static const DETECTION = _Paths.DETECTION;
 }
 
 abstract class _Paths {
@@ -25,4 +28,7 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const FORGOT_PASSWORD = '/forgot-password';
+  static const HOME_HEADER = '/home-header';
+  static const DETAIL_OPR = '/detail-opr';
+  static const DETECTION = '/detection';
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
-import '../../beranda/views/beranda_view.dart';
 import '../../tracking/views/tracking_view.dart';
+import '../../beranda/views/beranda_view.dart';
 import '../../jadwal/views/jadwal_view.dart';
 import '../../profile/views/profile_view.dart';
+import '../../../widgets/tab_header.dart';
 
 class HomeView extends StatelessWidget {
-  final controller = Get.put(HomeController());
+  final HomeController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -87,57 +88,9 @@ class HomeView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Obx(() => Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 22),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 6, horizontal: 8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: ["Tracking", "Beranda", "Jadwal"]
-                                  .map((tab) => Expanded(
-                                        child: GestureDetector(
-                                          onTap: () =>
-                                              controller.setActiveTab(tab),
-                                          child: AnimatedContainer(
-                                            duration: const Duration(
-                                                milliseconds: 300),
-                                            alignment: Alignment.center,
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 6),
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  controller.activeTab.value ==
-                                                          tab
-                                                      ? const Color(0xFFE25353)
-                                                          .withOpacity(0.6)
-                                                      : Colors.transparent,
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                            ),
-                                            child: Text(
-                                              tab,
-                                              style: TextStyle(
-                                                  fontSize: controller.activeTab
-                                                              .value ==
-                                                          tab
-                                                      ? 16
-                                                      : 14,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: controller.activeTab
-                                                              .value ==
-                                                          tab
-                                                      ? Colors.black
-                                                      : Colors.grey),
-                                            ),
-                                          ),
-                                        ),
-                                      ))
-                                  .toList(),
-                            ),
+                      Obx(() => TabHeader(
+                            activeTab: controller.activeTab.value,
+                            onTabChange: controller.setActiveTab,
                           )),
                     ],
                   ),
@@ -148,6 +101,7 @@ class HomeView extends StatelessWidget {
           ),
           Expanded(
             child: Obx(() {
+              // Cek route dan tampilkan view yang sesuai
               return IndexedStack(
                 index: ["Tracking", "Beranda", "Jadwal"]
                     .indexOf(controller.activeTab.value),
@@ -158,7 +112,7 @@ class HomeView extends StatelessWidget {
                 ],
               );
             }),
-          ),
+          )
         ],
       ),
     );

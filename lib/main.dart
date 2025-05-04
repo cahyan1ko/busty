@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
+      unknownRoute: AppPages.UNKNOWN,
     );
   }
 }
