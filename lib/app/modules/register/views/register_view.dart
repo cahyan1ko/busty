@@ -38,6 +38,11 @@ class RegisterView extends GetView<RegisterController> {
                 ),
                 const SizedBox(height: 10),
                 TextField(
+                  onChanged: (value) => controller.noHp.value = value,
+                  decoration: _inputDecoration('No. HP'),
+                ),
+                const SizedBox(height: 10),
+                TextField(
                   onChanged: (value) => controller.password.value = value,
                   obscureText: true,
                   decoration: _inputDecoration('Password'),
@@ -46,7 +51,9 @@ class RegisterView extends GetView<RegisterController> {
                 Obx(() => ElevatedButton(
                       onPressed: controller.isLoading.value
                           ? null
-                          : controller.register,
+                          : () {
+                              controller.register(); // Panggil fungsi register
+                            },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFFE25353),
                         foregroundColor: Colors.white,

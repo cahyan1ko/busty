@@ -1,5 +1,8 @@
-import 'package:busty/app/modules/home/views/home_view.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:busty/app/data/providers/api_service.dart';
+import 'package:busty/app/data/models/user_model.dart';
+import 'package:busty/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   var username = ''.obs;
@@ -11,23 +14,28 @@ class LoginController extends GetxController {
     isLoading.value = true;
     errorMessage.value = '';
 
-    // Cek dulu apakah ada yang kosong
     if (username.value.isEmpty || password.value.isEmpty) {
       isLoading.value = false;
       errorMessage.value = 'Username dan password wajib diisi';
       return;
     }
 
-    await Future.delayed(Duration(seconds: 2));
+    try {
+      final user = await ApiService.login(username.value, password.value);
 
-    // Cek login
-    if (username.value == 'admin' && password.value == 'admin') {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', user.token);
+
+// Verifikasi token disimpan
+      print('Token saved: ${prefs.getString('token')}');
+
       isLoading.value = false;
-      Get.snackbar('Login Sukses', 'Selamat datang, ${username.value}');
-      Get.offAllNamed('/home');
-    } else {
+      Get.snackbar('Login Berhasil', 'Selamat datang!');
+      Get.offAllNamed(Routes.HOME);
+    } catch (e) {
       isLoading.value = false;
-      errorMessage.value = 'Username atau password salah';
+      errorMessage.value = e.toString().replaceAll('Exception: ', '');
+      print("Error during login: $e"); // Cek pesan error di konsol
     }
   }
 }
