@@ -107,7 +107,7 @@ class HomeView extends StatelessWidget {
                     .indexOf(controller.activeTab.value),
                 children: [
                   TripHistoryView(),
-                  const BerandaView(),
+                  BerandaView(),
                   const JadwalView(),
                 ],
               );

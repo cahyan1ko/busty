@@ -1,23 +1,12 @@
 import 'package:get/get.dart';
 
 class BerandaController extends GetxController {
-  //TODO: Implement BerandaController
+  var namaSupir = 'Pak Budi'.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  var jadwalHariIni = {
+    'tujuan': 'Jakarta - Bandung',
+    'jam': '08:00 WIB',
+    'bus': 'Bus 07',
+    'status': 'Siap Berangkat',
+  }.obs;
 }
