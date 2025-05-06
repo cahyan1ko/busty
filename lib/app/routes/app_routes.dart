@@ -15,6 +15,7 @@ abstract class Routes {
   static const HOME_HEADER = _Paths.HOME_HEADER;
   static const DETAIL_OPR = _Paths.DETAIL_OPR;
   static const DETECTION = _Paths.DETECTION;
+  static const TRIP_HISTORY = _Paths.TRIP_HISTORY;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const HOME_HEADER = '/home-header';
   static const DETAIL_OPR = '/detail-opr';
   static const DETECTION = '/detection';
+  static const TRIP_HISTORY = '/trip-history';
 }

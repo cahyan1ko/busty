@@ -23,8 +23,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
-import '../modules/tracking/bindings/tracking_binding.dart';
-import '../modules/tracking/views/tracking_view.dart';
+import '../modules/trip_history/bindings/trip_history_binding.dart';
+import '../modules/trip_history/views/trip_history_view.dart';
 
 part 'app_routes.dart';
 
@@ -36,7 +36,8 @@ class AppPages {
   static final UNKNOWN = GetPage(name: '/notfound', page: () => Scaffold());
 
   static const HOME = '/home';
-  static const TRACKING = '/home/Tracking';
+  // static const TRACKING = '/home/Tracking';
+  static const TRIP_HISTORY = '/home/Riwayat';
   static const BERANDA = '/home/Beranda';
   static const JADWAL = '/home/Jadwal';
 
@@ -52,11 +53,6 @@ class AppPages {
       name: _Paths.DASHBOARD,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
-    ),
-    GetPage(
-      name: _Paths.TRACKING,
-      page: () => TrackingView(),
-      binding: TrackingBinding(),
     ),
     GetPage(
       name: _Paths.BERANDA,
@@ -97,6 +93,11 @@ class AppPages {
       name: _Paths.DETECTION,
       page: () => const DetectionView(),
       binding: DetectionBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRIP_HISTORY,
+      page: () => TripHistoryView(),
+      binding: TripHistoryBinding(),
     ),
   ];
 }

@@ -6,8 +6,10 @@ plugins {
 }
 
 android {
+    compileSdkVersion 35
     namespace = "com.example.busty"
-    compileSdk = flutter.compileSdkVersion
+    // compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

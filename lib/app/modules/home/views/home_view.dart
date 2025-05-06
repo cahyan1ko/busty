@@ -1,7 +1,7 @@
+import 'package:busty/app/modules/trip_history/views/trip_history_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
-import '../../tracking/views/tracking_view.dart';
 import '../../beranda/views/beranda_view.dart';
 import '../../jadwal/views/jadwal_view.dart';
 import '../../profile/views/profile_view.dart';
@@ -94,7 +94,7 @@ class HomeView extends StatelessWidget {
                           )),
                     ],
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -103,12 +103,12 @@ class HomeView extends StatelessWidget {
             child: Obx(() {
               // Cek route dan tampilkan view yang sesuai
               return IndexedStack(
-                index: ["Tracking", "Beranda", "Jadwal"]
+                index: ["Riwayat", "Beranda", "Jadwal"]
                     .indexOf(controller.activeTab.value),
-                children: const [
-                  TrackingView(),
-                  BerandaView(),
-                  JadwalView(),
+                children: [
+                  TripHistoryView(),
+                  const BerandaView(),
+                  const JadwalView(),
                 ],
               );
             }),

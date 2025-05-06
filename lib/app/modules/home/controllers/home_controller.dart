@@ -7,7 +7,7 @@ class HomeController extends GetxController {
 
   void setActiveTab(String tab) {
     activeTab.value = tab;
-    final index = ["Tracking", "Beranda", "Jadwal"].indexOf(tab);
+    final index = ["Riwayat", "Beranda", "Jadwal"].indexOf(tab);
     if (index != -1) {
       pageController.jumpToPage(index);
     }

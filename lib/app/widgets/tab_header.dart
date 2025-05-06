@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../routes/app_pages.dart';
 
 class TabHeader extends StatelessWidget {
   final String activeTab;
@@ -10,6 +11,19 @@ class TabHeader extends StatelessWidget {
     required this.activeTab,
     required this.onTabChange,
   }) : super(key: key);
+
+  String _getRouteFromTab(String tab) {
+    switch (tab) {
+      case 'Riwayat':
+        return Routes.TRIP_HISTORY;
+      case 'Beranda':
+        return Routes.BERANDA;
+      case 'Jadwal':
+        return Routes.JADWAL;
+      default:
+        return Routes.BERANDA;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +36,14 @@ class TabHeader extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: ["Tracking", "Beranda", "Jadwal"].map((tab) {
+        children: ["Riwayat", "Beranda", "Jadwal"].map((tab) {
           return Flexible(
             child: GestureDetector(
               onTap: () {
                 // Pindah ke tab yang diinginkan
                 onTabChange(tab);
                 // Pindah route ke tab tersebut
-                Get.toNamed('/home/${tab}');
+                Get.toNamed(_getRouteFromTab(tab));
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
@@ -46,7 +60,7 @@ class TabHeader extends StatelessWidget {
                   style: TextStyle(
                     fontSize: activeTab == tab ? 16 : 14,
                     fontWeight: FontWeight.bold,
-                    color: activeTab == tab ? Colors.black : Colors.grey,
+                    color: activeTab == tab ? Colors.white : Colors.grey,
                   ),
                 ),
               ),
