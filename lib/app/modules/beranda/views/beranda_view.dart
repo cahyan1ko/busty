@@ -10,7 +10,7 @@ class BerandaView extends GetView<BerandaController> {
     return Scaffold(
       backgroundColor: const Color(0xFFffffff),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(top: 16, left: 20, right: 20),
         child: ListView(
           children: [
             Obx(() => Text(

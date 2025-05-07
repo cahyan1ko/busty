@@ -1,4 +1,3 @@
-// detection_view.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:camera/camera.dart';
@@ -15,25 +14,46 @@ class DetectionView extends GetView<DetectionController> {
         title: const Text('DetectionView'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Obx(() {
-          if (!controller.isCameraInitialized.value) {
-            return const CircularProgressIndicator();
-          }
+      body: Padding(
+        padding: const EdgeInsets.only(top: 0), // Menghilangkan jarak atas
+        child: Center(
+          child: Obx(() {
+            if (!controller.isCameraInitialized.value) {
+              return const CircularProgressIndicator();
+            }
 
-          return AspectRatio(
-            aspectRatio: controller.cameraController.value.aspectRatio,
-            child: CameraPreview(controller.cameraController),
-          );
-        }),
+            return Container(
+              width: MediaQuery.of(context)
+                  .size
+                  .width, // Otomatis mengikuti lebar layar perangkat
+              height: 550, // Tentukan tinggi container
+              child: AspectRatio(
+                aspectRatio: controller.cameraController.value.aspectRatio,
+                child: CameraPreview(controller.cameraController),
+              ),
+            );
+          }),
+        ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Aksi: misalnya ambil foto, atau pindah layar
-        },
-        label: const Text('Scan'),
-        icon: const Icon(Icons.camera),
-        backgroundColor: Colors.blue,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton.extended(
+            onPressed: () {
+              // aksi scan
+            },
+            label: const Text('Scan'),
+            icon: const Icon(Icons.camera),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            heroTag: 'flip',
+            onPressed: () {
+              controller.flipCamera();
+            },
+            child: const Icon(Icons.flip_camera_android),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

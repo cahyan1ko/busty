@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
 
 class ApiService {
-  static const baseUrl = 'http://127.0.0.1:5000/api';
+  static const baseUrl = 'http://artistic-unicorn-subtly.ngrok-free.app/api';
 
   static Future<UserModel> login(String email, String password) async {
     final url = Uri.parse('$baseUrl/login');

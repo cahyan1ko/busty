@@ -19,7 +19,9 @@ class _JadwalViewState extends State<JadwalView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffffffff),
       body: SafeArea(
+        top: false,
         child: Container(
           color: Colors.white,
           child: Column(
@@ -60,7 +62,8 @@ class _JadwalViewState extends State<JadwalView> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
                                     image: const DecorationImage(
-                                      image: AssetImage('img/sampletujuan.png'),
+                                      image: AssetImage(
+                                          'assets/img/sampletujuan.png'),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
